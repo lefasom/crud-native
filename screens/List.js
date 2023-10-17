@@ -37,8 +37,6 @@ export default function List(props) {
   };
 
   const buscador = () => {
-    console.log(search)
-
     const producto_search = registros.filter((val) => {
       return (val.producto.toLowerCase().includes(search.toLowerCase()))
     })
