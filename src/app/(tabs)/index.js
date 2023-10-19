@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingTop: 10,
     paddingRightRight: 40,
-    backgroundColor: '#fff',
+    backgroundColor: '#eeee',
 
   },
   text: {

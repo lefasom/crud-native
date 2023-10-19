@@ -3,13 +3,13 @@ import { Text, StyleSheet, View, TextInput, Pressable, ScrollView, ActivityIndic
 
 import { db, uploadFile } from '../../../../database/firebase.js';
 import { collection, deleteDoc, getDoc, getDocs, addDoc, doc, setDoc } from "firebase/firestore";
-import { useSearchParams } from 'expo-router';
+import { useSearchParams, router  } from 'expo-router';
 import { Link } from 'expo-router';
-function Edit(props) {
+
+function Edit() {
 
   const { id } = useSearchParams()
   const collectionName = 'crud-native-firebase'
-
   const getUsuariosById = async (id) => {
     const usuario = await getDoc(doc(db, collectionName, id));
     const user = usuario.data()
@@ -37,6 +37,7 @@ function Edit(props) {
       producto: state.producto,
       precio: state.precio,
     })
+    router.replace('/');
   };
   return (
     <ScrollView style={styles.container}>

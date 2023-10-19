@@ -3,7 +3,7 @@ import { TextInput, ScrollView, StyleSheet, View, Text, FlatList, Pressable } fr
 import { Table, Row, Rows } from 'react-native-table-component';
 import { db } from '../../../database/firebase.js';
 import { collection, deleteDoc, getDoc, getDocs, addDoc, doc } from "firebase/firestore";
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 export default function Crear(props) {
 
     const collectionName = 'crud-native-firebase';
@@ -29,6 +29,7 @@ export default function Crear(props) {
     const saveNewUser = async () => {
         await addDoc(collection(db, collectionName), state);
         setState(initialState)
+        router.replace('/');
     }
     const onDeleteLink = async (id) => {
         await deleteDoc(doc(db, collectionName, id))
