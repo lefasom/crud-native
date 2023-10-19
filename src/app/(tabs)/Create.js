@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { TextInput, ScrollView, StyleSheet, View, Text, FlatList, Pressable } from 'react-native';
 import { Table, Row, Rows } from 'react-native-table-component';
-import { db } from '../database/firebase.js';
+import { db } from '../../../database/firebase.js';
 import { collection, deleteDoc, getDoc, getDocs, addDoc, doc } from "firebase/firestore";
-
+import { Link } from 'expo-router';
 export default function Crear(props) {
 
     const collectionName = 'crud-native-firebase';
@@ -28,7 +28,7 @@ export default function Crear(props) {
     };
     const saveNewUser = async () => {
         await addDoc(collection(db, collectionName), state);
-        props.navigation.navigate("List")
+        setState(initialState)
     }
     const onDeleteLink = async (id) => {
         await deleteDoc(doc(db, collectionName, id))
@@ -37,10 +37,13 @@ export default function Crear(props) {
 
     useEffect(() => {
         getLinks();
-    }, [saveNewUser, onDeleteLink]);
+    });
 
     return (
         <View>
+            <Link style={styles.link} href="/">
+                <Text style={styles.text2}>Atras</Text>
+            </Link>
             <View style={styles.container}>
                 <View>
                     <TextInput
@@ -57,6 +60,7 @@ export default function Crear(props) {
                     />
                 </View>
                 <View>
+
                     <Pressable
                         style={styles.button}
                         onPress={() => saveNewUser()}
@@ -78,11 +82,12 @@ const styles = StyleSheet.create({
 
     input: {
         padding: 5,
-        marginBottom: 2,
-        borderBottomWidth: 1,
-        borderBottomColor: '#cccccc',
+        marginBottom: 5,
+        borderWidth: 1,
+        borderColor: '#cccccc',
         fontSize: 20,
         marginTop: 5,
+        placeholderTextColor: '#bbbb',
     },
     button: {
         backgroundColor: 'blue',
@@ -96,8 +101,13 @@ const styles = StyleSheet.create({
     },
     scroll: {
         paddingBottom: 190,
+    },
+    link: {
+        padding: 5,
+        backgroundColor: 'blue',
+        width: 62,
+        margin: 10,
     }
 
 });
-
 

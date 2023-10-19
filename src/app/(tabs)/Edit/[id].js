@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Text, StyleSheet, View, TextInput, Pressable, ScrollView, ActivityIndicator } from 'react-native'
 
-import { db, uploadFile } from '../database/firebase.js'
+import { db, uploadFile } from '../../../../database/firebase.js';
 import { collection, deleteDoc, getDoc, getDocs, addDoc, doc, setDoc } from "firebase/firestore";
-
+import { useSearchParams } from 'expo-router';
+import { Link } from 'expo-router';
 function Edit(props) {
 
-  const ID = props.route.params.ID
+  const { id } = useSearchParams()
   const collectionName = 'crud-native-firebase'
 
   const getUsuariosById = async (id) => {
@@ -18,7 +19,7 @@ function Edit(props) {
   }
 
   useEffect(() => {
-    getUsuariosById(ID)
+    getUsuariosById(id)
   }, [])
 
   const initialState = {
@@ -36,17 +37,15 @@ function Edit(props) {
       producto: state.producto,
       precio: state.precio,
     })
-    props.navigation.navigate('List')
   };
-  if (loading) {
-    return (
-      <View>
-        <ActivityIndicator size='large' color='#9e9e9e' />
-      </View>
-    )
-  }
   return (
     <ScrollView style={styles.container}>
+
+      <Link style={styles.link} href="/">
+        <Text
+          style={styles.text2}
+        >Atras</Text>
+      </Link>
       <View style={styles.inputGroup}>
         <TextInput
           style={styles.input}
@@ -82,32 +81,39 @@ function Edit(props) {
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
-    padding: 16,
-    paddingTop: 30
+    padding: 10,
+    paddingTop: 10
   },
 
   input: {
     padding: 5,
-    marginBottom: 2,
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
+    marginBottom:5,
+    borderWidth: 1,
+    borderColor: '#cccccc',
     fontSize: 20,
     marginTop: 5,
+    placeholderTextColor: '#bbbb',
+
   },
   button: {
     backgroundColor: 'blue',
     padding: 5,
+
   },
   text2: {
     padding: 3,
     color: '#fff',
     fontSize: 20,
-    textAlign: 'center',
+   margin: 'auto',
   },
   scroll: {
     paddingBottom: 190,
+  },
+  link:{
+    padding: 5,
+    backgroundColor: 'blue',
+    width: 62,
   }
-
 });
 
 export default Edit

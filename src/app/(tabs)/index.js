@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { TextInput, ScrollView, StyleSheet, View, Text, FlatList, Pressable } from 'react-native';
 import { Table, Row, Rows } from 'react-native-table-component';
-import { db } from '../database/firebase.js';
+import { db } from '../../../database/firebase.js';
 import { collection, deleteDoc, getDoc, getDocs, addDoc, doc } from "firebase/firestore";
 import Icon from 'react-native-vector-icons/FontAwesome';
-
-export default function List(props) {
+import { Link } from 'expo-router';
+export default function List() {
 
   const collectionName = 'crud-native-firebase';
   const [registros, setRegistros] = useState([]);
@@ -50,15 +50,12 @@ export default function List(props) {
   return (
     <View>
       <View style={styles.flex}>
-        <Pressable
-          onPress={() => props.navigation.navigate("Create")}
-          style={styles.button}
-        >
+        <Link style={styles.link} href="/Create">
           <Text
             style={styles.text2}
-
           >Crear nuevo</Text>
-        </Pressable>
+        </Link>
+
         <TextInput
           style={styles.input}
           onChangeText={(text) => setSearch(text)}
@@ -83,16 +80,13 @@ export default function List(props) {
                       <Text style={styles.textProducto}>{val.producto}</Text>
                       <Text style={styles.textPrecio}>$ {val.precio}</Text>
                       <View style={styles.buttonContainer}>
-                        <Pressable style={styles.button}
-                          onPress={() => props.navigation.navigate('Edit', {
-                            ID: val.id
-                          })}
-                        >
+                        <Link style={styles.button} href={`/Edit/${val.id}`}>
                           <Text style={styles.text4}>
                             <Icon name="edit" size={30} color="#fff" />
-
                           </Text>
-                        </Pressable>
+                        </Link>
+
+
                         <Pressable
                           style={styles.button2}
                           color='#E37399'
@@ -117,7 +111,8 @@ export default function List(props) {
                       <Text style={styles.textProducto}>{val.producto}</Text>
                       <Text style={styles.textPrecio}>$ {val.precio}</Text>
                       <View style={styles.buttonContainer}>
-                        <Pressable style={styles.button}>
+                        <Pressable style={styles.button}
+                        >
                           <Text style={styles.text4}>
                             <Icon name="edit" size={30} color="#fff" />
 
@@ -181,16 +176,17 @@ const styles = StyleSheet.create({
   input: {
     padding: 10,
     width: 200,
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
+    borderWidth: 1,
+    borderColor: '#cccccc',
     backgroundColor: '#fff',
-    color: '#999',
+    color: '#333',
     fontSize: 20,
+    placeholderTextColor: '#bbbb',
 
   },
   button: {
     backgroundColor: 'blue',
-
+   display: 'flex',
   },
   button2: {
     backgroundColor: '#fff',
@@ -200,10 +196,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
   },
   text2: {
-    padding: 10,
+    padding: 5,
     color: '#fff',
     fontSize: 20,
-    textAlign: 'center',
+   margin: 'auto'
   },
   scroll: {
     paddingBottom: 230,
@@ -212,7 +208,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    margin: 10,
+    padding: 10,
+    height: 56,
   },
   textProducto: {
     width: 180,
@@ -229,7 +226,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   text4: {
-    padding: 10,
+    padding: 5,
+  },
+  link:{
+    padding: 5,
+    backgroundColor: 'blue',
   }
 });
 

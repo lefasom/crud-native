@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "lista_tareas",
-    "slug": "lista_tareas",
+    "name": "lista-de-productos",
+    "slug": "lista-de-productos",
+    "scheme": "lista-de-productos",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,7 +10,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,17 +21,24 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#000"
       },
-      "package": "com.lefasom.lista_tareas"
+      "package": "com.lefasom.listadeproductos"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "experiments": {
+      "typedRoutes": true
     },
     "extra": {
       "eas": {
-        "projectId": "8ed05df9-7e7a-4834-8dec-bc161730bba9"
+        "projectId": "07aded58-8eb5-4524-9a9f-3f0964ec7993"
       }
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
