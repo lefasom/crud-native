@@ -82,7 +82,7 @@ export default function List() {
                       <View style={styles.buttonContainer}>
                         <Link style={styles.button} href={`/Edit/${val.id}`}>
                           <Text style={styles.text4}>
-                            <Icon name="edit" size={30} color="#fff" />
+                            <Icon name="edit" size={30} color="blue" />
                           </Text>
                         </Link>
 
@@ -111,9 +111,9 @@ export default function List() {
                       <Text style={styles.textProducto}>{val.producto}</Text>
                       <Text style={styles.textPrecio}>$ {val.precio}</Text>
                       <View style={styles.buttonContainer}>
-                      <Link style={styles.button} href={`/Edit/${val.id}`}>
+                        <Link style={styles.button} href={`/Edit/${val.id}`}>
                           <Text style={styles.text4}>
-                            <Icon name="edit" size={30} color="#fff" />
+                            <Icon name="edit" size={30} color="blue" />
                           </Text>
                         </Link>
                         <Pressable
@@ -179,14 +179,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     color: '#333',
     fontSize: 20,
-    placeholderTextColor: '#bbbb',
+    TextInput: '#bbbb',
 
   },
   button: {
-    backgroundColor: 'blue',
-   display: 'flex',
+    margin: 10,
   },
   button2: {
+    margin: 3,
+
     backgroundColor: '#fff',
 
   },
@@ -197,7 +198,7 @@ const styles = StyleSheet.create({
     padding: 5,
     color: '#fff',
     fontSize: 20,
-   margin: 'auto'
+    margin: 'auto'
   },
   scroll: {
     paddingBottom: 230,
@@ -207,7 +208,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 10,
-    height: 56,
+    height: 60,
   },
   textProducto: {
     width: 180,
@@ -225,8 +226,9 @@ const styles = StyleSheet.create({
   },
   text4: {
     padding: 5,
+
   },
-  link:{
+  link: {
     padding: 5,
     backgroundColor: 'blue',
   }

@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     borderColor: '#cccccc',
     fontSize: 20,
     marginTop: 5,
-    placeholderTextColor: '#bbbb',
+    TextInput: '#bbbb',
 
   },
   button: {
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 20,
    margin: 'auto',
+   textAlign: 'center',
   },
   scroll: {
     paddingBottom: 190,

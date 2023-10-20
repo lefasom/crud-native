@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         borderColor: '#cccccc',
         fontSize: 20,
         marginTop: 5,
-        placeholderTextColor: '#bbbb',
+        TextInput: '#bbbb',
     },
     button: {
         backgroundColor: 'blue',
