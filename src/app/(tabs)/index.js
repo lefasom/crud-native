@@ -111,13 +111,11 @@ export default function List() {
                       <Text style={styles.textProducto}>{val.producto}</Text>
                       <Text style={styles.textPrecio}>$ {val.precio}</Text>
                       <View style={styles.buttonContainer}>
-                        <Pressable style={styles.button}
-                        >
+                      <Link style={styles.button} href={`/Edit/${val.id}`}>
                           <Text style={styles.text4}>
                             <Icon name="edit" size={30} color="#fff" />
-
                           </Text>
-                        </Pressable>
+                        </Link>
                         <Pressable
                           style={styles.button2}
                           color='#E37399'
